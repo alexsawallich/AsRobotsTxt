@@ -1,0 +1,96 @@
+<?php
+return array(
+	'asrobotstxt' => array(
+        
+	    /**
+	     * Should caching the robots.txt be enabled?
+	     * 
+	     * Note: This only makes sense when having a great number of rules.
+	     * If you set "disallowAll" to true, caching would probably be slower, than disabling it.
+	     * 
+	     * @accepted-values: boolean
+	     * @default: false
+	     */
+        'enableCache' => false,
+	    
+	    /**
+	     * Directory, in which the cache-file will be written. It's recommended to don't let this
+	     * directory be accessible from the document-root. You will have to create the specified directory
+	     * manually and make sure it is writable.
+	     * 
+	     * Note: This option only has effect, if "enableCache" is set to true.
+	     * Note2: If the cache is regenerated (this is done automatically if the options have been modified)
+	     * the whole directory will be emptied. Therefore don't store any other files in this directory.
+	     * 
+	     * @param string
+	     * @default: './data/cache/asrobotstxt'
+	     */
+	    'cacheDir' => './data/cache/asrobotstxt',
+	    
+	    /**
+	     * If this options is set to true, all robots will be disallowed to access any resource.
+	     * This option can be useful, if you have setup a bunch of rules and since you are in development
+	     * or staging mode of your project, you won't allow your page to be indexed.
+	     * 
+	     * So this is a shortcut to delete all rules below or commenting them out. If this options is
+	     * set to true the rules set below will be ignored, however the "customLines" and the sitemapXmlPath"-options
+	     * will still be respected.
+	     * 
+	     * @param boolean
+	     * @default false
+	     */
+	    'disallowAll' => false,
+	    
+	    /**
+	     * If you have got a sitemap.xml in your application to hint search-engines to your pages, you should
+	     * always there where the robots can find your sitemap.xml. This can be done, by putting the path in
+	     * your robots.txt (see: http://www.sitemaps.org/protocol.html#submit_robots).
+	     * 
+	     *  Here you can specify the path to your sitemap.xml. The necessary line will be put into the robots.txt
+	     *  at top most position. If you don't have a sitemap.xml set this option to NULL.
+	     *  
+	     *  Note: If you use this option, you should use the absolute uri including protocol and host, i.e.
+	     *  'http://example.org/sitemap.xml' instead of '/sitemap.xml'.
+	     *  
+	     *  @param string|NULL
+	     *  @default NULL
+	     */
+	    'sitemapXmlPath' => NULL,
+	    
+	    /**
+	     * Here you have the possibility to insert custom lines in your robots.txt. Each array-item will be
+	     * written 1:1 into the robots.txt.
+	     * 
+	     * @param array
+	     * @default array()
+	     */
+	    'customLines' => array(
+	        // ...
+        ),
+	    
+	    /**
+	     * The rules are a 3 dimensional-array to specify which user-agents to disallow which resources on your server.
+	     * 
+	     * The keys "user_agent" and "disallow" can both be either strings or arrays containing strings. See example below.
+	     * 
+	     * Example:
+	     * array(
+	     *     array(
+	     *         'user_agent' => '*',
+	     *         'disallow' => array('/admin', '/admin/')
+	     *     ),
+	     *     array(
+	     *         'user_agent' => array('Indy Library', 'Almaden'),
+	     *         'disallow' => '/'
+	     *     )
+	     * )
+	     * 
+	     * @param array
+	     * @default array()
+	     */
+	    'rules' => array(
+	        // ...
+        )
+	    
+    )
+);
